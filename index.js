@@ -10,7 +10,7 @@ autoUpdater.setFeedURL({ url })
 
 setInterval(() => {
 	autoUpdater.checkForUpdates()
-}, 1000)
+}, 50000)
 
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 		const dialogOpts = {
