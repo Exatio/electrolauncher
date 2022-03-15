@@ -3,7 +3,7 @@ const { app, BrowserWindow, autoUpdater, dialog } = require('electron')
 
 // AutoUpdater things
 
-const server = 'https://electron-launcher-exatio.vercel.app'
+const server = 'https://electroupdater.vercel.app'
 const url = `${server}/update/${process.platform}/${app.getVersion()}`
 
 autoUpdater.setFeedURL({ url })
