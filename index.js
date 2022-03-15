@@ -10,25 +10,26 @@ autoUpdater.setFeedURL({ url })
 
 setInterval(() => {
 	autoUpdater.checkForUpdates()
-}, 120000)
+}, 60000)
 
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-		const dialogOpts = {
+	const dialogOpts = {
 		type: 'info',
-		buttons: ['Restart', 'Later'],
-		title: 'Application Update',
-		message: process.platform === 'win32' ? releaseNotes : releaseName,
-		detail: "A new version has been downloaded. Restart the application to apply the updates."
+		buttons: ['Redémarrer', 'Plus tard'],
+		title: 'Mise à jour',
+		message: process.platform === 'win32' ? releaseName : releaseNotes,
+		detail: "Une mise à jour a été détectée et téléchargée. Redémarrez le launcher pour prendre en compte la mise à jour."
 	}
 	
 	dialog.showMessageBox(dialogOpts).then((returnValue) => {
 		if (returnValue.response === 0) autoUpdater.quitAndInstall()
+		else dialog.showMessageBox("t srx toi ? j'relance quand même mon reuf").then(() => autoUpdater.quitAndInstall())
 	})
 })
 
 
 autoUpdater.on('error', message => {
-	console.error('There was a problem updating the application')
+	console.error('Il y a eu un problème lors du téléchargement de la mise à jour...')
 	console.error(message)
 })
 
@@ -39,10 +40,13 @@ const createWindow = () => {
 	
 	const win = new BrowserWindow({
 		width: 800,
-		height: 600
+		height: 600,
+		//frame: false
+
 	})
 	
-	win.loadFile('index.html')
+
+	win.loadFile('src/index.html')
 }			
 
 app.whenReady().then(() => {

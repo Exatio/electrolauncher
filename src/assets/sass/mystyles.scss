@@ -1,0 +1,10 @@
+@charset "utf-8";
+@import "../../../node_modules/bulma/bulma.sass";
+
+.bulma-hamburger-mixin {
+    @include hamburger(2.5rem);
+}
+
+.bulma-delete-mixin {
+    @include delete;
+  }
